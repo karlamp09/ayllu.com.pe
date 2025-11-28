@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AYLLU — Unidos por la educación</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Theme color for mobile -->
+  <meta name="theme-color" content="#7EC8E3" />
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <div class="brand">
+        <!-- Reemplazar con el logo real -->
+        <img src="assets/img/logo.png" alt="Ayllu logo" class="logo" onerror="this.style.display='none'">
+        <span class="brand-text">AYLLU</span>
+      </div>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="#home">Inicio</a>
+        <a href="#about">Sobre nosotros</a>
+        <a href="#campaigns">Campañas</a>
+        <a href="#education">Educación</a>
+        <a href="#volunteer">Únete</a>
+        <a href="#contact">Contacto</a>
+      </nav>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" id="navToggle">
+        ☰
+      </button>
+  </header>
+
+  <!-- HERO / Slider -->
+  <section id="home" class="hero">
+    <div class="hero-inner container">
+      <div class="hero-left">
+        <div class="eyebrow">Bienvenido a AYLLU</div>
+        <h1>Educación no tradicional para transformar comunidades</h1>
+        <p class="lead">Trabajamos con niños y familias en Lima para entregar oportunidades, apoyo emocional y educación desde el corazón.</p>
+        <a href="#volunteer" class="btn btn-primary">Únete y sé voluntario</a>
+      </div>
+
+      <div class="hero-right">
+        <div class="slider" id="heroSlider" aria-label="Galería de imágenes">
+          <!-- Replace src with real images -->
+          <div class="slide active"><img src="assets/img/voluntarios.jpg" alt="Voluntarios con niños"></div>
+          <div class="slide"><img src="assets/img/proximamente.png" alt="Actividad educativa"></div>
+          <div class="slide"><img src="assets/img/grupal.jpg" alt="Campaña comunitaria"></div>
+        </div>
+
+        <div class="slider-controls">
+          <button id="prevSlide" aria-label="Anterior">‹</button>
+          <button id="nextSlide" aria-label="Siguiente">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats / Achievements -->
+  <section class="achievements container">
+    <h2>Nuestros <span class="accent">logros</span> en datos</h2>
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat-icon">😊</div>
+        <div class="stat-number">+500 +</div>
+        <p>Niños felices a lo largo de estos años.</p>
+      </div>
+
+      <div class="stat">
+        <div class="stat-icon">🎒</div>
+        <div class="stat-number">200+</div>
+        <p>Niños con material educativo para estudiar en casa.</p>
+      </div>
+
+      <div class="stat">
+        <div class="stat-icon">📍</div>
+        <div class="stat-number">4+</div>
+        <p>Intervenciones mensuales en asentamientos humanos.</p>
+      </div>
+
+      <div class="stat">
+        <div class="stat-icon">🤝</div>
+        <div class="stat-number">20+</div>
+        <p>Personas inscritas en el programa de acompañamiento psicológico.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About with video -->
+  <section id="about" class="about container">
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>Sobre <span class="accent">nosotros</span></h2>
+        <p class="lead">AYLLU es una organización dedicada a brindar educación no tradicional y acompañamiento a niños y familias en contextos vulnerables. Nuestra misión es construir espacios seguros de aprendizaje que empoderen a las comunidades.</p>
+
+        <h3>Misión</h3>
+        <p>Promover educación y bienestar emocional para niños y adolescentes de Cantagallo y otras comunidades vulnerables.</p>
+
+        <h3>Visión</h3>
+        <p>Ser una referencia en educación no tradicional, impulsando oportunidades sostenibles y afectivas para cada niño.</p>
+      </div>
+
+      <div class="about-media">
+       <div class="video-wrap">
+        <video controls>
+         <source src="assets/video/navidad.mp4" type="video/mp4">
+         Tu navegador no soporta video.
+       </video>
+     </div>
+   </div>
+  </section>
+
+  <!-- Campaigns -->
+  <section id="campaigns" class="campaigns container">
+    <h2>Nuestras <span class="accent">campañas</span></h2>
+    <div class="cards-grid">
+      <article class="card">
+        <img src="assets/img/campaña.png"" alt="Campaña navideña">
+        <h4>Campaña Navideña</h4>
+        <p>Repartimos canastas y material educativo a niños en extrema pobreza.</p>
+        <a class="card-link" href="#">Ver más →</a>
+      </article>
+
+      <article class="card">
+        <img src="assets/img/educacion.png" alt="Campaña educativa">
+        <h4>Materiales escolares</h4>
+        <p>Educación mediante actividades no-tradicionales sectorizados por edades.</p>
+        <a class="card-link" href="#">Ver más →</a>
+      </article>
+
+      <article class="card">
+        <img src="assets/img/salud.jpg" alt="Campaña salud">
+        <h4>Acompañamiento psicológico</h4>
+        <p>Programa #Contigo para brindar atención emocional y orientaciones.</p>
+        <a class="card-link" href="#">Ver más →</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Education lines -->
+  <section id="education" class="education container">
+    <h2>Nuestras <span class="accent">líneas de acción</span></h2>
+    <div class="lines-grid">
+      <div class="line">
+        <h3>Portal Edu-Ayllu</h3>
+        <p>Portal de material educativo para los niños</p>
+      </div>
+
+      <div class="line">
+        <h3>Edukids</h3>
+        <p>Cursos virtuales y recursos educativos accesibles para colegios y comunidades.</p>
+      </div>
+
+      <div class="line">
+        <h3>Apoyo Seguo!</h3>
+        <p>Espacio seguro y confidencial para abordar situaciones sensibles en comunidades.</p>
+      </div>
+
+      <div class="line">
+        <h3>Voluntarios</h3>
+        <p>Gestión de voluntarios y donaciones, coordinación de actividades en terreno.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Volunteer / Join -->
+  <section id="volunteer" class="volunteer">
+    <div class="container volunteer-inner">
+      <div class="volunteer-info">
+        <h2>Únete y <span class="accent">sé voluntario</span></h2>
+        <p class="lead">Tu tiempo puede transformar vidas. Regístrate y nos pondremos en contacto para contarte las oportunidades de apoyo.</p>
+        <ul>
+          <li>Actividades educativas</li>
+          <li>Logística en campañas</li>
+          <li>Acompañamiento emocional</li>
+        </ul>
+      </div>
+
+      <form id="volunteerForm" class="volunteer-form" aria-label="Formulario de voluntariado">
+        <label for="vname">Nombre completo</label>
+        <input id="vname" name="name" type="text" placeholder="Tu nombre" required>
+
+        <label for="vemail">Correo electrónico</label>
+        <input id="vemail" name="email" type="email" placeholder="tu@correo.com" required>
+
+        <label for="vphone">Teléfono</label>
+        <input id="vphone" name="phone" type="tel" placeholder="+51 9XXXXXXXX" required>
+
+        <label for="varea">Áreas de interés</label>
+        <select id="varea" name="area" required>
+          <option value="">Selecciona...</option>
+          <option>Educación</option>
+          <option>Logística</option>
+          <option>Salud mental</option>
+          <option>Comunicación</option>
+        </select>
+
+        <label for="vmessage">¿Por qué quieres ser voluntario?</label>
+        <textarea id="vmessage" name="message" rows="4" placeholder="Cuéntanos brevemente"></textarea>
+
+        <button type="submit" class="btn btn-secondary">Enviar solicitud</button>
+
+        <div id="volunteerMsg" class="form-message" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <footer id="contact" class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <h3>Contacto</h3>
+        <p>Email: fundacion.ayllu21@gmail.com</p>
+        <p>Tel: +51 92056253x</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram">asociacion.ayllu</a>
+          <a href="#" aria-label="Facebook">asociacion.ayllu</a>
+          <a href="#" aria-label="TikTok">asociacion.ayllu</a>
+        </div>
+      </div>
+
+      <div class="footer-map">
+        <h3>Envíanos un mensaje</h3>
+        <form id="contactForm">
+          <input name="name" type="text" placeholder="Nombre" required>
+          <input name="email" type="email" placeholder="Correo" required>
+          <textarea name="message" rows="3" placeholder="Mensaje" required></textarea>
+          <button type="submit" class="btn btn-primary">Enviar</button>
+          <div id="contactMsg" class="form-message" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+
+    <div class="site-credits container">
+      <p>© <span id="year"></span> AYLLU — Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="scripts.js"></script>
+</body>
+</html>
