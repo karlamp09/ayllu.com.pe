@@ -27,8 +27,9 @@ document.addEventListener('DOMContentLoaded', function () {
     showSlide(current);
   }, 6000);
 
+
   // ---------------------------------------------------
-  // ⭐ FORMULARIO VOLUNTARIOS — ENVÍO REAL A GOOGLE SHEET
+  // ⭐ FORMULARIO VOLUNTARIOS — ENVÍO A GOOGLE SHEET
   // ---------------------------------------------------
   const volunteerForm = document.getElementById('volunteerForm');
   const volunteerMsg = document.getElementById('volunteerMsg');
@@ -50,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     try {
-      const res = await fetch("https://script.google.com/macros/s/AKfycbwOcp3-BQtH8VCpuQeM4Ik688MsMkAapvLlVItlJ6w-ZKLvpI7Td0ttPoM3fMAzALIRsw/exec", {
+      const res = await fetch("https://script.google.com/macros/s/AKfycbwMGBO4jOQHBk9Ns_6Ybd0c7wZt5H0nXhdEz-r0eHC_FLPogJTaHxqGAPIZkWBnjLFF7w/exec", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
@@ -73,8 +74,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+
   // ---------------------------------------------------
-  // ⭐ FORMULARIO CONTACTO — ENVÍO REAL A GOOGLE SHEET
+  // ⭐ FORMULARIO CONTACTO — ENVÍO A GOOGLE SHEET
   // ---------------------------------------------------
   const contactForm = document.getElementById('contactForm');
   const contactMsg = document.getElementById('contactMsg');
@@ -94,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     try {
-      const res = await fetch("https://script.google.com/macros/s/AKfycbwOcp3-BQtH8VCpuQeM4Ik688MsMkAapvLlVItlJ6w-ZKLvpI7Td0ttPoM3fMAzALIRsw/exec", {
+      const res = await fetch("https://script.google.com/macros/s/AKfycbwMGBO4jOQHBk9Ns_6Ybd0c7wZt5H0nXhdEz-r0eHC_FLPogJTaHxqGAPIZkWBnjLFF7w/exec", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
@@ -118,4 +120,3 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 });
-
