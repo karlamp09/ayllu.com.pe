@@ -27,10 +27,9 @@ document.addEventListener('DOMContentLoaded', function () {
     showSlide(current);
   }, 6000);
 
-  // --------------------------------------
-  // ⭐ FORMULARIO VOLUNTARIOS (ENVÍO REAL)
-  // --------------------------------------
-
+  // ---------------------------------------------------
+  // ⭐ FORMULARIO VOLUNTARIOS — ENVÍO REAL A GOOGLE SHEET
+  // ---------------------------------------------------
   const volunteerForm = document.getElementById('volunteerForm');
   const volunteerMsg = document.getElementById('volunteerMsg');
 
@@ -51,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     try {
-      const res = await fetch("https://script.google.com/macros/s/AKfycbxs0vA6uFQxyZN3FG_c3-94nDsnDfn1V8_0tQqcVYtTl5gyAP_sCEALEiCclXdbSTRv5g/exec", {
+      const res = await fetch("https://script.google.com/macros/s/AKfycbwMGBO4jOQHBk9Ns_6Ybd0c7wZt5H0nXhdEz-r0eHC_FLPogJTaHxqGAPIZkWBnjLFF7w/exec", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
@@ -74,10 +73,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // --------------------------------------
-  // ⭐ FORMULARIO CONTACTO (ENVÍO REAL)
-  // --------------------------------------
-
+  // ---------------------------------------------------
+  // ⭐ FORMULARIO CONTACTO — ENVÍO REAL A GOOGLE SHEET
+  // ---------------------------------------------------
   const contactForm = document.getElementById('contactForm');
   const contactMsg = document.getElementById('contactMsg');
 
@@ -96,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     try {
-      const res = await fetch("https://script.google.com/macros/s/AKfycbxs0vA6uFQxyZN3FG_c3-94nDsnDfn1V8_0tQqcVYtTl5gyAP_sCEALEiCclXdbSTRv5g/exec", {
+      const res = await fetch("https://script.google.com/macros/s/AKfycbwMGBO4jOQHBk9Ns_6Ybd0c7wZt5H0nXhdEz-r0eHC_FLPogJTaHxqGAPIZkWBnjLFF7w/exec", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
@@ -105,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const json = await res.json();
 
       if (json.status === "success") {
-        contactMsg.textContent = "Mensaje enviado correctamente.";
+        contactMsg.textContent = "Mensaje enviado correctamente. ¡Gracias!";
         contactMsg.style.color = "#7EC8E3";
         contactForm.reset();
       } else {
