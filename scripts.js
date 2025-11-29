@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
   const volunteerForm = document.getElementById('volunteerForm');
 
-  // URL DEL WEBAPP (tu URL real)
-  const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbx6zdOPHP1PCZfqZDr6fqTWWB4CP-jVRBbb8f4zE47tFLIlkEs9UPgzRkJc6NQEN6rZkg/exec";
+  // URL DEL WEBAPP (tu URL real actualizado)
+  const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzXvcsxwYk2fy6t-yUK7Rgkzfd1bB6wvU7048eF9fbgMstOkGj63lVhs-LibPZnwmwbhg/exec";
 
   volunteerForm.addEventListener('submit', async function (e) {
     e.preventDefault();
