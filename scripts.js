@@ -1,7 +1,7 @@
 /***********************************************
  * CONFIGURACIÓN
  ***********************************************/
-const API_URL = "https://script.google.com/macros/s/AKfycbzu2XNVyAiVLT4IfH36VD7yHkaB2d35S7pwRJoo9rSLXQQOSDv4aj1YN_BZ2dNaw39nKA/exec";   // Pegas la URL desplegada del Apps Script
+const API_URL = "https://script.google.com/macros/s/AKfycbx6zdOPHP1PCZfqZDr6fqTWWB4CP-jVRBbb8f4zE47tFLIlkEs9UPgzRkJc6NQEN6rZkg/exec";   // Pegas la URL desplegada del Apps Script
 const TOKEN = "ayllu2025";
 
 /***********************************************
@@ -73,3 +73,4 @@ document.getElementById("form-contacto")?.addEventListener("submit", async (e) =
 
   if (exito) e.target.reset();
 });
+
