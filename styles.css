@@ -3,7 +3,7 @@
   --celeste: #7EC8E3;
   --amarillo: #FFEB3B;
   --menta: #B5EAD7;
-  --gris-claro: #F5F5F5;
+  --gris-claro: #000000;
   --azul: #4D76F6;
   --texto: #222;
   --muted: #666;
@@ -125,3 +125,4 @@ img{max-width:100%;display:block}
   .volunteer-form{width:100%}
   .hero-left h1{font-size:26px}
 }
+
