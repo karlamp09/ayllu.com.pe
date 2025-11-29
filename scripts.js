@@ -1,70 +1,39 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const volunteerForm = document.getElementById('volunteerForm');
-
-  // URL DEL WEBAPP (tu URL real actualizado)
-  const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzXvcsxwYk2fy6t-yUK7Rgkzfd1bB6wvU7048eF9fbgMstOkGj63lVhs-LibPZnwmwbhg/exec";
-
-  volunteerForm.addEventListener('submit', async function (e) {
+document.getElementById("volunteerForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
-    // Deshabilitar botón mientras se envía
-    const submitBtn = volunteerForm.querySelector('button[type="submit"]');
+    const submitBtn = document.getElementById("submitBtn");
     submitBtn.disabled = true;
     submitBtn.textContent = "Enviando...";
 
-    // Crear datos para enviar al backend
-    const payload = {
-      token: "ayllu2025",
-      tipo: "voluntario",
-      nombre: volunteerForm.name.value,
-      correo: volunteerForm.email.value,
-      telefono: volunteerForm.phone.value,
-      area: volunteerForm.area.value,
-      motivo: volunteerForm.message.value
-    };
+    const formData = new FormData(this);
 
-    try {
-      const response = await fetch(WEBAPP_URL, {
-        method: 'POST',
-        headers: {
-          "Content-Type": "application/json",
-          "X-App-Token": "ayllu2025"
-        },
-        body: JSON.stringify(payload)
-      });
-
-      const result = await response.json();
-
-      if (result.status === "success") {
+    fetch("https://script.google.com/macros/s/AKfycbzXvcsxwYk2fy6t-yUK7Rgkzfd1bB6wvU7048eF9fbgMstOkGj63lVhs-LibPZnwmwbhg/exec", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.text())
+    .then(text => {
         Swal.fire({
-          icon: 'success',
-          title: '¡Registro enviado!',
-          text: 'Gracias por unirte como voluntario/a.',
-          confirmButtonColor: '#6a0dad'
+            icon: 'success',
+            title: '¡Enviado!',
+            text: 'Tu registro ha sido enviado correctamente.',
+            confirmButtonColor: '#3085d6'
         });
 
-        volunteerForm.reset();
-      } else {
+        document.getElementById("volunteerForm").reset();
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Enviar";
+    })
+    .catch(error => {
         Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: result.message || 'No se pudo guardar la información.',
-          confirmButtonColor: '#d33'
+            icon: 'error',
+            title: 'Error',
+            text: 'Hubo un problema al enviar. Intenta nuevamente.',
+            confirmButtonColor: '#d33'
         });
-      }
 
-    } catch (error) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Error de conexión',
-        text: 'No pudimos contactar con el servidor.',
-        confirmButtonColor: '#d33'
-      });
-    }
-
-    // Reset botón
-    submitBtn.disabled = false;
-    submitBtn.textContent = "Enviar";
-  });
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Enviar";
+        console.error("Error:", error);
+    });
 });
-
