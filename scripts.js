@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     try {
-      const res = await fetch("https://script.google.com/macros/s/AKfycbwMGBO4jOQHBk9Ns_6Ybd0c7wZt5H0nXhdEz-r0eHC_FLPogJTaHxqGAPIZkWBnjLFF7w/exec", {
+      const res = await fetch("https://script.google.com/macros/s/AKfycbwOcp3-BQtH8VCpuQeM4Ik688MsMkAapvLlVItlJ6w-ZKLvpI7Td0ttPoM3fMAzALIRsw/exec", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     try {
-      const res = await fetch("https://script.google.com/macros/s/AKfycbwMGBO4jOQHBk9Ns_6Ybd0c7wZt5H0nXhdEz-r0eHC_FLPogJTaHxqGAPIZkWBnjLFF7w/exec", {
+      const res = await fetch("https://script.google.com/macros/s/AKfycbwOcp3-BQtH8VCpuQeM4Ik688MsMkAapvLlVItlJ6w-ZKLvpI7Td0ttPoM3fMAzALIRsw/exec", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
@@ -118,3 +118,4 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 });
+
