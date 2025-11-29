@@ -44,39 +44,83 @@ document.addEventListener('DOMContentLoaded', function () {
     showSlide(current);
   }, 6000);
 
-  // Volunteer form: client-side validation and fake submit (you'll connect to server later)
+  /************************************
+   *  ✅ FORMULARIO DE VOLUNTARIOS — REAL
+   *  Ahora conectado a Google Apps Script
+   ************************************/
   const volunteerForm = document.getElementById('volunteerForm');
   const volunteerMsg = document.getElementById('volunteerMsg');
 
-  volunteerForm.addEventListener('submit', (e) => {
+  // URL del WebApp
+  const APP_URL = "https://script.google.com/macros/s/AKfycbxs0vA6uFQxyZN3FG_c3-94nDsnDfn1V8_0tQqcVYtTl5gyAP_sCEALEiCclXdbSTRv5g/exec";
+  const TOKEN = "ayllu2025";
+
+  volunteerForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    volunteerMsg.textContent = '';
-    const name = volunteerForm.name.value.trim();
-    const email = volunteerForm.email.value.trim();
-    const phone = volunteerForm.phone.value.trim();
-    const area = volunteerForm.area.value;
+    volunteerMsg.textContent = "";
 
-    if (!name || !email || !phone || !area) {
-      volunteerMsg.textContent = 'Por favor completa los campos obligatorios.';
-      volunteerMsg.style.color = '#FFEB3B';
+    // Obtener campos
+    const nombre = document.getElementById("vname").value.trim();
+    const correo = document.getElementById("vemail").value.trim();
+    const telefono = document.getElementById("vphone").value.trim();
+    const area = document.getElementById("varea").value.trim();
+    const motivo = document.getElementById("vmessage").value.trim();
+
+    // Validación (tu estilo)
+    if (!nombre || !correo || !telefono || !area) {
+      volunteerMsg.textContent = "Por favor completa los campos obligatorios.";
+      volunteerMsg.style.color = "#FFEB3B";
       return;
     }
 
-    // Basic email pattern
     const emailPattern = /\S+@\S+\.\S+/;
-    if (!emailPattern.test(email)) {
-      volunteerMsg.textContent = 'Ingresa un correo válido.';
-      volunteerMsg.style.color = '#FFEB3B';
+    if (!emailPattern.test(correo)) {
+      volunteerMsg.textContent = "Ingresa un correo válido.";
+      volunteerMsg.style.color = "#FFEB3B";
       return;
     }
 
-    // Simulate submit: here podrías integrar fetch() a tu backend o Google Apps Script
-    volunteerMsg.style.color = '#B5EAD7';
-    volunteerMsg.textContent = 'Gracias por tu interés. Pronto nos pondremos en contacto.';
-    volunteerForm.reset();
+    // Datos a enviar al Apps Script
+    const data = {
+      nombre,
+      correo,
+      telefono,
+      area,
+      motivo,
+      token: TOKEN
+    };
+
+    try {
+      const res = await fetch(APP_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-App-Token": TOKEN
+        },
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+
+      if (result.status === "success") {
+        volunteerMsg.style.color = "#B5EAD7"; 
+        volunteerMsg.textContent = "¡Gracias! Tu solicitud fue enviada correctamente.";
+        volunteerForm.reset();
+      } else {
+        volunteerMsg.style.color = "#FFEB3B";
+        volunteerMsg.textContent = "Error: " + result.message;
+      }
+
+    } catch (error) {
+      console.error("Error:", error);
+      volunteerMsg.style.color = "#FFEB3B";
+      volunteerMsg.textContent = "Hubo un error al enviar tu solicitud.";
+    }
   });
 
-  // Contact form behavior (similar fake submit)
+  /************************************
+   *  FORMULARIO DE CONTACTO (sin cambios)
+   ************************************/
   const contactForm = document.getElementById('contactForm');
   const contactMsg = document.getElementById('contactMsg');
 
