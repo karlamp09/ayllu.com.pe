@@ -50,7 +50,7 @@ volunteerForm.addEventListener("submit", async (e) => {
 
   try {
     const response = await fetch(
-      "https://script.google.com/macros/s/AKfycbzXvcsxwYk2fy6t-yUK7Rgkzfd1bB6wvU7048eF9fbgMstOkGj63lVhs-LibPZnwmwbhg/exec",
+      "https://script.google.com/macros/s/AKfycbz-cTj7cPKE5Yr92fLfKUJLIxBTJNUb2v_JZlGwxOT3Pmb-ktlzXxy1CgzcbKixWQ3pIQ/exec",
       {
         method: "POST",
         body: formData,
@@ -90,7 +90,7 @@ contactForm.addEventListener("submit", async (e) => {
 
   try {
     const response = await fetch(
-      "https://script.google.com/macros/s/AKfycbzXvcsxwYk2fy6t-yUK7Rgkzfd1bB6wvU7048eF9fbgMstOkGj63lVhs-LibPZnwmwbhg/exec",
+      "https://script.google.com/macros/s/AKfycbz-cTj7cPKE5Yr92fLfKUJLIxBTJNUb2v_JZlGwxOT3Pmb-ktlzXxy1CgzcbKixWQ3pIQ/exec",
       {
         method: "POST",
         body: formData,
@@ -118,3 +118,4 @@ contactForm.addEventListener("submit", async (e) => {
 //  YEAR FOOTER
 // =========================
 document.getElementById("year").textContent = new Date().getFullYear();
+
