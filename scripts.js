@@ -1,122 +1,75 @@
-document.addEventListener('DOMContentLoaded', function () {
-  document.getElementById('year').textContent = new Date().getFullYear();
+/***********************************************
+ * CONFIGURACIÓN
+ ***********************************************/
+const API_URL = "https://script.google.com/macros/s/AKfycbzu2XNVyAiVLT4IfH36VD7yHkaB2d35S7pwRJoo9rSLXQQOSDv4aj1YN_BZ2dNaw39nKA/exec";   // Pegas la URL desplegada del Apps Script
+const TOKEN = "ayllu2025";
 
-  // ----- SLIDER -----
-  const slides = Array.from(document.querySelectorAll('.slide'));
-  let current = slides.findIndex(s => s.classList.contains('active'));
-  if (current < 0) current = 0;
-
-  const showSlide = (index) => {
-    slides.forEach((s, i) => {
-      s.classList.toggle('active', i === index);
+/***********************************************
+ * FUNCIÓN: Enviar datos al Apps Script
+ ***********************************************/
+async function enviarDatos(data) {
+  try {
+    const respuesta = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
     });
+
+    const resultado = await respuesta.json();
+
+    if (resultado.status === "success") {
+      alert("✔️ Datos enviados correctamente");
+      return true;
+    } else {
+      alert("⚠️ Error: " + resultado.message);
+      return false;
+    }
+
+  } catch (error) {
+    console.error("Error de conexión:", error);
+    alert("❌ Error de conexión con el servidor");
+    return false;
+  }
+}
+
+/***********************************************
+ * FORMULARIO VOLUNTARIOS
+ ***********************************************/
+document.getElementById("form-voluntarios")?.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const data = {
+    tipo: "voluntario",
+    token: TOKEN,
+    nombre: document.getElementById("nombre_vol").value.trim(),
+    correo: document.getElementById("correo_vol").value.trim(),
+    telefono: document.getElementById("telefono_vol").value.trim(),
+    area: document.getElementById("area_vol").value,
+    motivo: document.getElementById("motivo_vol").value.trim()
   };
 
-  document.getElementById('prevSlide').addEventListener('click', () => {
-    current = (current - 1 + slides.length) % slides.length;
-    showSlide(current);
-  });
+  const exito = await enviarDatos(data);
 
-  document.getElementById('nextSlide').addEventListener('click', () => {
-    current = (current + 1) % slides.length;
-    showSlide(current);
-  });
+  if (exito) e.target.reset();
+});
 
-  setInterval(() => {
-    current = (current + 1) % slides.length;
-    showSlide(current);
-  }, 6000);
+/***********************************************
+ * FORMULARIO CONTACTO
+ ***********************************************/
+document.getElementById("form-contacto")?.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
+  const data = {
+    tipo: "contacto",
+    token: TOKEN,
+    nombre: document.getElementById("nombre_con").value.trim(),
+    correo: document.getElementById("correo_con").value.trim(),
+    mensaje: document.getElementById("mensaje_con").value.trim()
+  };
 
-  // ---------------------------------------------------
-  // ⭐ FORMULARIO VOLUNTARIOS — ENVÍO A GOOGLE SHEET
-  // ---------------------------------------------------
-  const volunteerForm = document.getElementById('volunteerForm');
-  const volunteerMsg = document.getElementById('volunteerMsg');
+  const exito = await enviarDatos(data);
 
-  volunteerForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    volunteerMsg.textContent = "Enviando...";
-    volunteerMsg.style.color = "#FFEB3B";
-
-    const data = {
-      tipo: "voluntario",
-      token: "ayllu2025",
-      nombre: volunteerForm.name.value,
-      correo: volunteerForm.email.value,
-      telefono: volunteerForm.phone.value,
-      area: volunteerForm.area.value,
-      motivo: volunteerForm.message.value
-    };
-
-    try {
-      const res = await fetch("https://script.google.com/macros/s/AKfycbwMGBO4jOQHBk9Ns_6Ybd0c7wZt5H0nXhdEz-r0eHC_FLPogJTaHxqGAPIZkWBnjLFF7w/exec", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      });
-
-      const json = await res.json();
-
-      if (json.status === "success") {
-        volunteerMsg.textContent = "Tu solicitud fue enviada exitosamente. ¡Gracias!";
-        volunteerMsg.style.color = "#B5EAD7";
-        volunteerForm.reset();
-      } else {
-        volunteerMsg.textContent = "Hubo un error: " + json.message;
-        volunteerMsg.style.color = "#FFEB3B";
-      }
-
-    } catch (error) {
-      volunteerMsg.textContent = "Error de conexión. Intenta nuevamente.";
-      volunteerMsg.style.color = "#FFEB3B";
-    }
-  });
-
-
-  // ---------------------------------------------------
-  // ⭐ FORMULARIO CONTACTO — ENVÍO A GOOGLE SHEET
-  // ---------------------------------------------------
-  const contactForm = document.getElementById('contactForm');
-  const contactMsg = document.getElementById('contactMsg');
-
-  contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    contactMsg.textContent = "Enviando...";
-    contactMsg.style.color = "#7EC8E3";
-
-    const data = {
-      tipo: "contacto",
-      token: "ayllu2025",
-      nombre: contactForm.name.value,
-      correo: contactForm.email.value,
-      mensaje: contactForm.message.value
-    };
-
-    try {
-      const res = await fetch("https://script.google.com/macros/s/AKfycbwMGBO4jOQHBk9Ns_6Ybd0c7wZt5H0nXhdEz-r0eHC_FLPogJTaHxqGAPIZkWBnjLFF7w/exec", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      });
-
-      const json = await res.json();
-
-      if (json.status === "success") {
-        contactMsg.textContent = "Mensaje enviado correctamente. ¡Gracias!";
-        contactMsg.style.color = "#7EC8E3";
-        contactForm.reset();
-      } else {
-        contactMsg.textContent = "Hubo un error: " + json.message;
-        contactMsg.style.color = "#FFEB3B";
-      }
-
-    } catch (error) {
-      contactMsg.textContent = "Error de conexión. Intenta nuevamente.";
-      contactMsg.style.color = "#FFEB3B";
-    }
-  });
-
+  if (exito) e.target.reset();
 });
